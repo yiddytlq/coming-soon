@@ -1,0 +1,39 @@
+# Git and version control
+.git
+.gitignore
+
+# Docker files
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Environment files
+.env
+.env.example
+
+# Build artifacts and temporary files
+index-deployed.html
+*.tmp
+*.log
+
+# Documentation that's not needed in container
+README.md
+
+# Node modules if any
+node_modules
+npm-debug.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Custom directories that might be mounted
+custom-assets/
+custom-media/
+custom-styles.css
