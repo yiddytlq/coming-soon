@@ -18,7 +18,7 @@
     <section class="info-section">
       <!-- Logo -->
       <!-- <img class="logo" src="./images/logo.svg" alt="Your logo" /> -->
-      <span style="font-size: 2rem; color: white;">{{BRAND_NAME}}</span>
+      <span style="font-size: 2rem; color: white;" id="brand-name">{{BRAND_NAME}}</span>
       <!-- </section> -->
       <div class="text-section">
         <h1><span><b>We're</b></span> coming soon</h1>
@@ -44,6 +44,19 @@
 
 
   <!-- <script src="app.js"></script> -->
+  <script>
+    // Format brand name with spaces between letters
+    document.addEventListener('DOMContentLoaded', function() {
+      const brandElement = document.getElementById('brand-name');
+      if (brandElement) {
+        const brandText = brandElement.textContent.trim();
+        // Only add spaces if the brand name doesn't already have them
+        if (!brandText.includes(' ')) {
+          brandElement.textContent = brandText.split('').join(' ');
+        }
+      }
+    });
+  </script>
 
 </body>
 

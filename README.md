@@ -23,7 +23,9 @@ The template uses placeholder variables that can be replaced during deployment:
 
 ### Default Values
 
-See `template-config.json` for default values that you can customize.
+See `template-config.json` for default values that you can customize. The template uses "NEXUS" as a fictional brand name and preserves the original non-brand-specific content.
+
+**Note:** Brand names are automatically formatted with spaces between letters (e.g., "NEXUS" becomes "N E X U S") to match the original design aesthetic. If your brand name already contains spaces, they will be preserved as-is.
 
 ### Deployment Options
 
