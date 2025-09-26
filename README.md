@@ -20,7 +20,7 @@ A professional, responsive coming soon page template that can be deployed in min
 # docker-compose.yml
 services:
   coming-soon:
-    build: .
+    build: https://github.com/yiddytlq/coming-soon.git
     ports:
       - "8080:80"
     environment:
@@ -44,8 +44,8 @@ Visit: http://localhost:8080
 
 **Option 2: Docker Run (Basic customization)**
 ```bash
-# Build the image from this repository
-docker build -t coming-soon .
+# Build the image directly from GitHub repository
+docker build -t coming-soon https://github.com/yiddytlq/coming-soon.git
 
 # Run with custom configuration
 docker run -d -p 8080:80 \
