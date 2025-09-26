@@ -44,6 +44,10 @@ Visit: http://localhost:8080
 
 **Option 2: Docker Run (Basic customization)**
 ```bash
+# Build the image from this repository
+docker build -t coming-soon .
+
+# Run with custom configuration
 docker run -d -p 8080:80 \
   -e SITE_TITLE="Your Company - Coming Soon" \
   -e BRAND_NAME="YOUR COMPANY" \
