@@ -1,0 +1,63 @@
+services:
+  coming-soon:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      # Basic configuration
+      - SITE_TITLE=${SITE_TITLE:-Your Company Name}
+      - SITE_DESCRIPTION=${SITE_DESCRIPTION:-We're building something amazing! Stay tuned for our launch.}
+      - SITE_KEYWORDS=${SITE_KEYWORDS:-coming soon, launch, website, startup}
+      - BRAND_NAME=${BRAND_NAME:-ACME}
+      - SITE_MESSAGE=${SITE_MESSAGE:-Something incredible is coming soon. We're working hard to bring you an amazing experience!}
+      
+      # Media customization
+      - BACKGROUND_VIDEO=${BACKGROUND_VIDEO:-./media/bgvideo1.mp4}
+      - FAVICON=${FAVICON:-media/hourglass.png}
+      
+      # Custom asset URLs (optional)
+      - CUSTOM_CSS_URL=${CUSTOM_CSS_URL:-}
+      - CUSTOM_LOGO_URL=${CUSTOM_LOGO_URL:-}
+    
+    # volumes:
+      # Mount custom assets directory (optional)
+      # Uncomment the lines below to mount custom assets from host
+      # - ./custom-assets:/usr/share/nginx/html/custom:ro
+      
+      # Mount custom media files (optional)
+      # Uncomment the line below to override default media files
+      # - ./custom-media:/usr/share/nginx/html/media:ro
+      
+      # Mount custom CSS file (optional)
+      # Uncomment the line below to override styles
+      # - ./custom-styles.css:/usr/share/nginx/html/custom/custom.css:ro
+    
+    restart: unless-stopped
+    
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+# Alternative service for development with live reload
+  coming-soon-dev:
+    profiles: ["dev"]
+    build: 
+      context: .
+      target: builder
+    ports:
+      - "8080:8000"
+    environment:
+      - SITE_TITLE=${SITE_TITLE:-Development Mode}
+      - SITE_DESCRIPTION=${SITE_DESCRIPTION:-Development version of coming soon page}
+      - SITE_KEYWORDS=${SITE_KEYWORDS:-development, coming soon, template}
+      - BRAND_NAME=${BRAND_NAME:-DEV}
+      - SITE_MESSAGE=${SITE_MESSAGE:-Development mode - changes will be reflected here}
+      - BACKGROUND_VIDEO=${BACKGROUND_VIDEO:-./media/bgvideo1.mp4}
+      - FAVICON=${FAVICON:-media/hourglass.png}
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: sh -c "python3 -m http.server 8000"

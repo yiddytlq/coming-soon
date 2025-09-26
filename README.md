@@ -8,6 +8,9 @@ A responsive coming soon page template that can be easily customized for any bra
 - Video background support
 - Clean, modern design
 - Easy to customize with environment variables or template placeholders
+- **Docker-ready with single-command deployment**
+- **Docker Compose support with environment variable configuration**
+- **Asset override support via URLs or volume mounting**
 
 ## Customization
 
@@ -56,6 +59,34 @@ sed -i 's|{{FAVICON}}|'$FAVICON'|g' index.html
 #### Option 3: CI/CD Pipeline
 Use your CI/CD pipeline to inject values during build/deployment process.
 
+#### Option 4: Docker Deployment (Recommended)
+
+The easiest way to deploy is using Docker:
+
+**Quick Start with Docker:**
+```bash
+# Run with default settings
+docker run -d -p 8080:80 coming-soon
+
+# Run with custom configuration
+docker run -d -p 8080:80 \
+  -e SITE_TITLE="Your Company" \
+  -e BRAND_NAME="ACME" \
+  -e SITE_MESSAGE="Something amazing is coming soon!" \
+  coming-soon
+```
+
+**Using Docker Compose:**
+```bash
+# Copy .env.example to .env and customize
+cp .env.example .env
+
+# Deploy with docker-compose
+docker compose up -d
+```
+
+**📖 For complete Docker deployment guide, see [DOCKER.md](DOCKER.md)**
+
 ## Files Structure
 
 - `index.html` - Main HTML template with placeholder variables
@@ -63,6 +94,12 @@ Use your CI/CD pipeline to inject values during build/deployment process.
 - `app.js` - JavaScript for email validation (currently commented out)
 - `media/` - Background video, icons, and other media assets
 - `template-config.json` - Default configuration values
+- `deploy.sh` - Build script for environment variable replacement
+- `Dockerfile` - Docker image definition for containerized deployment
+- `docker-compose.yml` - Docker Compose configuration with examples
+- `docker/` - Docker-related configuration files
+- `.env.example` - Example environment variables file
+- `DOCKER.md` - Complete Docker deployment guide
 - `README.md` - This documentation
 
 ## Usage
