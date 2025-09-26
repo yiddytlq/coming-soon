@@ -1,0 +1,22 @@
+# Deployment artifacts
+index-deployed.html
+*-deployed.html
+
+# Temporary files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.production
