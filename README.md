@@ -20,6 +20,8 @@ The template uses placeholder variables that can be replaced during deployment:
 - `{{SITE_KEYWORDS}}` - Meta keywords for SEO
 - `{{BRAND_NAME}}` - Your brand/company name
 - `{{SITE_MESSAGE}}` - Main message displayed to visitors
+- `{{BACKGROUND_VIDEO}}` - Path or URL to background video file
+- `{{FAVICON}}` - Path to favicon icon file
 
 ### Default Values
 
@@ -40,11 +42,15 @@ Create a build script that replaces template variables with environment variable
 export SITE_TITLE="My Awesome Site"
 export BRAND_NAME="ACME Corp"
 export SITE_MESSAGE="Something amazing is coming soon!"
+export BACKGROUND_VIDEO="./media/my-custom-video.mp4"
+export FAVICON="media/my-favicon.png"
 
 # Replace in HTML file
 sed -i 's/{{SITE_TITLE}}/'$SITE_TITLE'/g' index.html
 sed -i 's/{{BRAND_NAME}}/'$BRAND_NAME'/g' index.html
-sed -i 's/{{SITE_MESSAGE}}/'$SITE_MESSAGE'/g' index.html
+sed -i 's|{{SITE_MESSAGE}}|'$SITE_MESSAGE'|g' index.html
+sed -i 's|{{BACKGROUND_VIDEO}}|'$BACKGROUND_VIDEO'|g' index.html
+sed -i 's|{{FAVICON}}|'$FAVICON'|g' index.html
 ```
 
 #### Option 3: CI/CD Pipeline
@@ -55,7 +61,7 @@ Use your CI/CD pipeline to inject values during build/deployment process.
 - `index.html` - Main HTML template with placeholder variables
 - `styles.css` - CSS styles (no customization needed)
 - `app.js` - JavaScript for email validation (currently commented out)
-- `images/` - Background video and icons
+- `media/` - Background video, icons, and other media assets
 - `template-config.json` - Default configuration values
 - `README.md` - This documentation
 
@@ -63,12 +69,33 @@ Use your CI/CD pipeline to inject values during build/deployment process.
 
 1. Clone or download this template
 2. Replace template variables with your values
-3. Customize the background video in `images/bgvideo1.mp4` if needed
+3. Customize the background video in `media/bgvideo1.mp4` if needed
+4. Replace the favicon in `media/hourglass.png` with your own icon
 4. Deploy to your web server
 
-## Background Video
+## Media Assets
 
-The template includes a background video (`images/bgvideo1.mp4`). Replace this with your own video file to match your brand aesthetic.
+### Background Video
+
+The template includes a background video (`media/bgvideo1.mp4`). You can replace this in several ways:
+
+1. **Replace the file**: Simply replace `media/bgvideo1.mp4` with your own video file
+2. **Use a different path**: Set `BACKGROUND_VIDEO` to a different local path like `./media/my-video.mp4`
+3. **Use a URL**: Set `BACKGROUND_VIDEO` to a URL like `https://example.com/video.mp4`
+
+### Favicon
+
+The template uses `media/hourglass.png` as the favicon. Replace this file with your own icon or set the `FAVICON` variable to a different path.
+
+### Other Assets
+
+The `media/` folder also contains:
+- `icon-arrow.svg` - Arrow icon for button (if email form is enabled)
+- `icon-error.svg` - Error icon for form validation
+- `low-poly-grid-haikei.svg` - Alternative background pattern (commented out)
+- `favicon-32x32.png` - Additional favicon size
+
+You can replace any of these assets with your own branded versions.
 
 ## Browser Support
 

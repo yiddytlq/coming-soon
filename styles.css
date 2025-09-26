@@ -42,8 +42,8 @@ body::-webkit-scrollbar {
   grid-template-columns: 1fr;
   padding: 4rem 10.2rem;
   gap: 1rem;
-  /* background: url("images/bg-pattern-desktop.svg"), linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%)); */
-  /* background: url(./images/low-poly-grid-haikei.svg); */
+  /* background: url("media/bg-pattern-desktop.svg"), linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%)); */
+  /* background: url(./media/low-poly-grid-haikei.svg); */
   background-size: cover;
   justify-content: space-evenly;
 }
@@ -117,7 +117,7 @@ h1 span {
 }
 
 .arrow-img {
-  background-image: url("images/icon-arrow.svg");
+  background-image: url("media/icon-arrow.svg");
   background-repeat: no-repeat;
   background-position: center;
   width: 2rem;
@@ -142,7 +142,7 @@ h1 span {
   right: 25%;
 }
 .error-icon {
-  background-image: url("images/icon-error.svg");
+  background-image: url("media/icon-error.svg");
   background-repeat: no-repeat;
   background-position: center;
   width: 3.5rem;
@@ -151,7 +151,7 @@ h1 span {
 
 /* IMG Section */
 /* .img-section { */
-  /* background-image: url("images/hero-desktop.jpg"); */
+  /* background-image: url("media/hero-desktop.jpg"); */
   /* background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
