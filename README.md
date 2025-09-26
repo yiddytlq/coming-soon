@@ -1,140 +1,83 @@
 # Coming Soon Page Template
 
-A responsive coming soon page template that can be easily customized for any brand or project.
+A professional, responsive coming soon page template that can be deployed in minutes with Docker. Perfect for launches, maintenance pages, or temporary landing pages.
 
 ## Features
 
-- Responsive design that works on all devices
-- Video background support
-- Clean, modern design
-- Easy to customize with environment variables or template placeholders
-- **Docker-ready with single-command deployment**
-- **Docker Compose support with environment variable configuration**
-- **Asset override support via URLs or volume mounting**
+✨ **Responsive design** that works beautifully on all devices  
+🎥 **Video background support** with fallback options  
+🎨 **Clean, modern aesthetic** that's ready to use  
+🐳 **Docker-ready** with single-command deployment  
+⚙️ **Easy customization** via environment variables  
+🔧 **Asset override** support for logos, styles, and media  
 
-## Customization
+## Quick Start
 
-The template uses placeholder variables that can be replaced during deployment:
+### Docker Deployment (Recommended)
 
-### Template Variables
-
-- `{{SITE_TITLE}}` - The page title shown in browser tab
-- `{{SITE_DESCRIPTION}}` - Meta description for SEO
-- `{{SITE_KEYWORDS}}` - Meta keywords for SEO
-- `{{BRAND_NAME}}` - Your brand/company name
-- `{{SITE_MESSAGE}}` - Main message displayed to visitors
-- `{{BACKGROUND_VIDEO}}` - Path or URL to background video file
-- `{{FAVICON}}` - Path to favicon icon file
-
-### Default Values
-
-See `template-config.json` for default values that you can customize. The template uses "NEXUS" as a fictional brand name and preserves the original non-brand-specific content.
-
-**Note:** Brand names are automatically formatted with spaces between letters (e.g., "NEXUS" becomes "N E X U S") to match the original design aesthetic. If your brand name already contains spaces, they will be preserved as-is.
-
-### Deployment Options
-
-#### Option 1: Direct Replacement
-Replace template variables directly in the HTML file before deployment.
-
-#### Option 2: Environment Variables + Build Script
-Create a build script that replaces template variables with environment variables:
-
-```bash
-# Example environment variables
-export SITE_TITLE="My Awesome Site"
-export BRAND_NAME="ACME Corp"
-export SITE_MESSAGE="Something amazing is coming soon!"
-export BACKGROUND_VIDEO="./media/my-custom-video.mp4"
-export FAVICON="media/my-favicon.png"
-
-# Replace in HTML file
-sed -i 's/{{SITE_TITLE}}/'$SITE_TITLE'/g' index.html
-sed -i 's/{{BRAND_NAME}}/'$BRAND_NAME'/g' index.html
-sed -i 's|{{SITE_MESSAGE}}|'$SITE_MESSAGE'|g' index.html
-sed -i 's|{{BACKGROUND_VIDEO}}|'$BACKGROUND_VIDEO'|g' index.html
-sed -i 's|{{FAVICON}}|'$FAVICON'|g' index.html
+**Option 1: Docker Compose (No customization)**
+```yaml
+# docker-compose.yml
+services:
+  coming-soon:
+    build: https://github.com/yiddytlq/coming-soon.git
+    ports:
+      - "8080:80"
+    environment:
+      - SITE_TITLE=Coming Soon
+      - BRAND_NAME=NEXUS
+      - SITE_MESSAGE=Hello fellow developers! We're currently building our new application.
+      # Customize these values:
+      # - SITE_TITLE=Your Company - Coming Soon
+      # - BRAND_NAME=YOUR COMPANY
+      # - SITE_MESSAGE=We're building something amazing!
+      # - SITE_DESCRIPTION=Your custom description
+      # - CUSTOM_LOGO_URL=https://cdn.example.com/logo.png
+      # - CUSTOM_CSS_URL=https://cdn.example.com/styles.css
+      # - BACKGROUND_VIDEO=https://cdn.example.com/video.mp4
+    restart: unless-stopped
 ```
-
-#### Option 3: CI/CD Pipeline
-Use your CI/CD pipeline to inject values during build/deployment process.
-
-#### Option 4: Docker Deployment (Recommended)
-
-The easiest way to deploy is using Docker:
-
-**Quick Start with Docker:**
 ```bash
-# Run with default settings
-docker run -d -p 8080:80 coming-soon
+docker compose up -d
+```
+Visit: http://localhost:8080
+
+**Option 2: Docker Run (Basic customization)**
+```bash
+# Build the image directly from GitHub repository
+docker build -t coming-soon https://github.com/yiddytlq/coming-soon.git
 
 # Run with custom configuration
 docker run -d -p 8080:80 \
-  -e SITE_TITLE="Your Company" \
-  -e BRAND_NAME="ACME" \
-  -e SITE_MESSAGE="Something amazing is coming soon!" \
+  -e SITE_TITLE="Your Company - Coming Soon" \
+  -e BRAND_NAME="YOUR COMPANY" \
+  -e SITE_MESSAGE="We're building something amazing!" \
   coming-soon
 ```
 
-**Using Docker Compose:**
-```bash
-# Copy .env.example to .env and customize
-cp .env.example .env
+## Configuration
 
-# Deploy with docker-compose
-docker compose up -d
-```
+### Essential Variables
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `SITE_TITLE` | Page title (browser tab) | "ACME Corp - Coming Soon" |
+| `BRAND_NAME` | Your brand name | "ACME" |
+| `SITE_MESSAGE` | Main message to visitors | "Revolutionary products coming soon!" |
 
-**📖 For complete Docker deployment guide, see [DOCKER.md](DOCKER.md)**
+### Optional Customization
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `SITE_DESCRIPTION` | SEO meta description | "Coming Soon - We're building something amazing" |
+| `CUSTOM_LOGO_URL` | Custom logo image URL | _(none)_ |
+| `CUSTOM_CSS_URL` | Custom stylesheet URL | _(none)_ |
+| `BACKGROUND_VIDEO` | Background video path/URL | "./media/bgvideo1.mp4" |
 
-## Files Structure
+For a complete list of configuration options, see `.env.example`.
 
-- `index.html` - Main HTML template with placeholder variables
-- `styles.css` - CSS styles (no customization needed)
-- `app.js` - JavaScript for email validation (currently commented out)
-- `media/` - Background video, icons, and other media assets
-- `template-config.json` - Default configuration values
-- `deploy.sh` - Build script for environment variable replacement
-- `Dockerfile` - Docker image definition for containerized deployment
-- `docker-compose.yml` - Docker Compose configuration with examples
-- `docker/` - Docker-related configuration files
-- `.env.example` - Example environment variables file
-- `DOCKER.md` - Complete Docker deployment guide
-- `README.md` - This documentation
+## Documentation
 
-## Usage
-
-1. Clone or download this template
-2. Replace template variables with your values
-3. Customize the background video in `media/bgvideo1.mp4` if needed
-4. Replace the favicon in `media/hourglass.png` with your own icon
-4. Deploy to your web server
-
-## Media Assets
-
-### Background Video
-
-The template includes a background video (`media/bgvideo1.mp4`). You can replace this in several ways:
-
-1. **Replace the file**: Simply replace `media/bgvideo1.mp4` with your own video file
-2. **Use a different path**: Set `BACKGROUND_VIDEO` to a different local path like `./media/my-video.mp4`
-3. **Use a URL**: Set `BACKGROUND_VIDEO` to a URL like `https://example.com/video.mp4`
-
-### Favicon
-
-The template uses `media/hourglass.png` as the favicon. Replace this file with your own icon or set the `FAVICON` variable to a different path.
-
-### Other Assets
-
-The `media/` folder also contains:
-- `icon-arrow.svg` - Arrow icon for button (if email form is enabled)
-- `icon-error.svg` - Error icon for form validation
-- `low-poly-grid-haikei.svg` - Alternative background pattern (commented out)
-- `favicon-32x32.png` - Additional favicon size
-
-You can replace any of these assets with your own branded versions.
+📖 **[DOCKER.md](DOCKER.md)** - Complete Docker deployment guide with advanced examples  
 
 ## Browser Support
 
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Responsive design for mobile and tablet devices
+Modern browsers (Chrome, Firefox, Safari, Edge) with responsive design for mobile and tablet devices.
