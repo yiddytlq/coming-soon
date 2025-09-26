@@ -15,28 +15,40 @@ A professional, responsive coming soon page template that can be deployed in min
 
 ### Docker Deployment (Recommended)
 
-**Option 1: Default deployment**
+**Option 1: Docker Compose (No customization)**
+```yaml
+# docker-compose.yml
+services:
+  coming-soon:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      - SITE_TITLE=Coming Soon
+      - BRAND_NAME=NEXUS
+      - SITE_MESSAGE=Hello fellow developers! We're currently building our new application.
+      # Customize these values:
+      # - SITE_TITLE=Your Company - Coming Soon
+      # - BRAND_NAME=YOUR COMPANY
+      # - SITE_MESSAGE=We're building something amazing!
+      # - SITE_DESCRIPTION=Your custom description
+      # - CUSTOM_LOGO_URL=https://cdn.example.com/logo.png
+      # - CUSTOM_CSS_URL=https://cdn.example.com/styles.css
+      # - BACKGROUND_VIDEO=https://cdn.example.com/video.mp4
+    restart: unless-stopped
+```
 ```bash
-docker run -d -p 8080:80 coming-soon
+docker compose up -d
 ```
 Visit: http://localhost:8080
 
-**Option 2: Custom branding**
+**Option 2: Docker Run (Basic customization)**
 ```bash
 docker run -d -p 8080:80 \
   -e SITE_TITLE="Your Company - Coming Soon" \
   -e BRAND_NAME="YOUR COMPANY" \
   -e SITE_MESSAGE="We're building something amazing!" \
   coming-soon
-```
-
-**Option 3: Docker Compose**
-```bash
-# Copy and customize environment file
-cp .env.example .env
-
-# Deploy
-docker compose up -d
 ```
 
 ## Configuration
@@ -61,8 +73,6 @@ For a complete list of configuration options, see `.env.example`.
 ## Documentation
 
 📖 **[DOCKER.md](DOCKER.md)** - Complete Docker deployment guide with advanced examples  
-🚀 **[QUICK-START.md](QUICK-START.md)** - Get deployed in under 2 minutes  
-💡 **[examples/](examples/)** - Real-world deployment examples  
 
 ## Browser Support
 
