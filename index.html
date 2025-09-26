@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Base Apparel coming soon page - Frontend Mentor">
-  <meta name="keywords" content="Base Apparel coming soon page. Frontend Mentor">
+  <meta name="description" content="{{SITE_DESCRIPTION}}">
+  <meta name="keywords" content="{{SITE_KEYWORDS}}"
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/hourglass.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{FAVICON}}">
   <link rel="stylesheet" href="styles.css">
 
-  <title>Coming Soon</title>
+  <title>{{SITE_TITLE}}</title>
 </head>
 
 <body>
@@ -17,13 +17,12 @@
     <!-- Info Section -->
     <section class="info-section">
       <!-- Logo -->
-      <!-- <img class="logo" src="./images/logo.svg" alt="Your logo" /> -->
-      <span style="font-size: 2rem; color: white;">E N I G M A</span>
+      <!-- <img class="logo" src="./media/logo.svg" alt="Your logo" /> -->
+      <span style="font-size: 2rem; color: white;" id="brand-name">{{BRAND_NAME}}</span>
       <!-- </section> -->
       <div class="text-section">
         <h1><span><b>We're</b></span> coming soon</h1>
-        <p> <b>Hello fellow developers! We're currently building our new application.
-              Stay up-to-date with announcements and our launch date.</b></p>
+        <p> <b>{{SITE_MESSAGE}}</b></p>
         <!-- Input Section -->
         <!-- <div class="input-section"> -->
           <!-- <input type="email" class="input-field" placeholder="Email Address"> -->
@@ -39,12 +38,25 @@
     <!-- IMG Section -->
     <!-- <section class="img-section"></section> -->
     <video autoplay playsinline loop muted id="bgvideo">
-      <source src="./images/bgvideo1.mp4" type="video/mp4"/>
+      <source src="{{BACKGROUND_VIDEO}}" type="video/mp4"/>
     </video>
   </main>
 
 
   <!-- <script src="app.js"></script> -->
+  <script>
+    // Format brand name with spaces between letters
+    document.addEventListener('DOMContentLoaded', function() {
+      const brandElement = document.getElementById('brand-name');
+      if (brandElement) {
+        const brandText = brandElement.textContent.trim();
+        // Only add spaces if the brand name doesn't already have them
+        if (!brandText.includes(' ')) {
+          brandElement.textContent = brandText.split('').join(' ');
+        }
+      }
+    });
+  </script>
 
 </body>
 
