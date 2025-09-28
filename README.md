@@ -88,7 +88,7 @@ For a complete list of configuration options, see `.env.example`.
 
 ## Documentation
 
-📖 **[DOCKER.md](DOCKER.md)** - Complete Docker deployment guide with advanced examples  
+📖 **[DOCKER.md](/docker/DOCKER.md)** - Complete Docker deployment guide with advanced examples  
 
 ## Browser Support
 
