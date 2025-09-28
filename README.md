@@ -32,11 +32,11 @@ services:
       # - BRAND_NAME=YOUR COMPANY
       # - SITE_MESSAGE=We're building something amazing!
       # - SITE_DESCRIPTION=Your custom description
-      # - SITE_URL=https://yourcompany.com
+      # - SITE_URL=https://yoursiteurl.com
       # - OG_IMAGE=https://yourcompany.com/social-image.jpg
-      # - CUSTOM_LOGO_URL=https://cdn.example.com/logo.png
-      # - CUSTOM_CSS_URL=https://cdn.example.com/styles.css
-      # - BACKGROUND_VIDEO=https://cdn.example.com/video.mp4
+      # - CUSTOM_LOGO_URL=https://cdn.yoursiteurl.com/logo.png
+      # - CUSTOM_CSS_URL=https://cdn.yoursiteurl.com/styles.css
+      # - BACKGROUND_VIDEO=https://cdn.yoursiteurl.com/video.mp4
     restart: unless-stopped
 ```
 ```bash
@@ -54,8 +54,8 @@ docker run -d -p 8080:80 \
   -e SITE_TITLE="Your Company - Coming Soon" \
   -e BRAND_NAME="YOUR COMPANY" \
   -e SITE_MESSAGE="We're building something amazing!" \
-  -e SITE_URL="https://yourcompany.com" \
-  -e OG_IMAGE="https://yourcompany.com/social-image.jpg" \
+  -e SITE_URL="https://yoursiteurl.com" \
+  -e OG_IMAGE="https://yoursiteurl.com/social-image.jpg" \
   coming-soon
 ```
 
