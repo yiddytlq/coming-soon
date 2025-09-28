@@ -33,7 +33,7 @@ services:
       # - SITE_MESSAGE=We're building something amazing!
       # - SITE_DESCRIPTION=Your custom description
       # - SITE_URL=https://yoursiteurl.com
-      # - OG_IMAGE=https://yourcompany.com/social-image.jpg
+      # - OG_IMAGE=https://yoursiteurl.com/social-image.jpg
       # - CUSTOM_LOGO_URL=https://cdn.yoursiteurl.com/logo.png
       # - CUSTOM_CSS_URL=https://cdn.yoursiteurl.com/styles.css
       # - BACKGROUND_VIDEO=https://cdn.yoursiteurl.com/video.mp4
@@ -72,8 +72,8 @@ docker run -d -p 8080:80 \
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `SITE_DESCRIPTION` | SEO meta description | "Revolutionary products are coming soon!" |
-| `SITE_URL` | Canonical URL and base for social sharing | "https://yourcompany.com" |
-| `OG_IMAGE` | Open Graph image for social sharing | "https://yourcompany.com/social-image.jpg" |
+| `SITE_URL` | Canonical URL and base for social sharing | "https://yoursiteurl.com" |
+| `OG_IMAGE` | Open Graph image for social sharing | "https://cdn.yoursiteurl.com/social-image.jpg" |
 | `OG_TYPE` | Open Graph content type | "website" |
 
 ### Optional Customization
