@@ -86,18 +86,6 @@ docker run -d -p 8080:80 \
 
 For a complete list of configuration options, see `.env.example`.
 
-## SEO and Social Media Features
-
-✅ **Complete Open Graph tags** for Meta platforms (Facebook, Instagram, WhatsApp)  
-✅ **X (Twitter) Card support** for proper link previews  
-✅ **Canonical URLs** for SEO optimization  
-✅ **Meta descriptions and keywords** for search engine indexing  
-✅ **Customizable social sharing images** via `OG_IMAGE` variable  
-
-**Testing your social media setup:**
-- **Meta Sharing Debugger**: https://developers.facebook.com/tools/debug/
-- **X Card Validator**: https://cards-dev.twitter.com/validator
-
 ## Documentation
 
 📖 **[DOCKER.md](DOCKER.md)** - Complete Docker deployment guide with advanced examples  
