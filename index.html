@@ -4,9 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="{{SITE_DESCRIPTION}}">
-  <meta name="keywords" content="{{SITE_KEYWORDS}}"
+  <meta name="keywords" content="{{SITE_KEYWORDS}}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{SITE_URL}}">
+  
+  <!-- Open Graph meta tags for Meta platforms (Facebook, Instagram, WhatsApp) -->
+  <meta property="og:title" content="{{SITE_TITLE}}">
+  <meta property="og:description" content="{{SITE_DESCRIPTION}}">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:url" content="{{SITE_URL}}">
+  <meta property="og:type" content="{{OG_TYPE}}">
+  <meta property="og:site_name" content="{{BRAND_NAME}}">
+  
+  <!-- X (Twitter) Card meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{SITE_TITLE}}">
+  <meta name="twitter:description" content="{{SITE_DESCRIPTION}}">
+  <meta name="twitter:image" content="{{OG_IMAGE}}">
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{FAVICON}}">
+  
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 
   <title>{{SITE_TITLE}}</title>

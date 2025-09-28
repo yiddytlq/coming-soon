@@ -32,6 +32,8 @@ services:
       # - BRAND_NAME=YOUR COMPANY
       # - SITE_MESSAGE=We're building something amazing!
       # - SITE_DESCRIPTION=Your custom description
+      # - SITE_URL=https://yourcompany.com
+      # - OG_IMAGE=https://yourcompany.com/social-image.jpg
       # - CUSTOM_LOGO_URL=https://cdn.example.com/logo.png
       # - CUSTOM_CSS_URL=https://cdn.example.com/styles.css
       # - BACKGROUND_VIDEO=https://cdn.example.com/video.mp4
@@ -52,6 +54,8 @@ docker run -d -p 8080:80 \
   -e SITE_TITLE="Your Company - Coming Soon" \
   -e BRAND_NAME="YOUR COMPANY" \
   -e SITE_MESSAGE="We're building something amazing!" \
+  -e SITE_URL="https://yourcompany.com" \
+  -e OG_IMAGE="https://yourcompany.com/social-image.jpg" \
   coming-soon
 ```
 
@@ -64,15 +68,35 @@ docker run -d -p 8080:80 \
 | `BRAND_NAME` | Your brand name | "ACME" |
 | `SITE_MESSAGE` | Main message to visitors | "Revolutionary products coming soon!" |
 
+### SEO and Social Media Variables
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `SITE_DESCRIPTION` | SEO meta description | "Revolutionary products are coming soon!" |
+| `SITE_URL` | Canonical URL and base for social sharing | "https://yourcompany.com" |
+| `OG_IMAGE` | Open Graph image for social sharing | "https://yourcompany.com/social-image.jpg" |
+| `OG_TYPE` | Open Graph content type | "website" |
+
 ### Optional Customization
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `SITE_DESCRIPTION` | SEO meta description | "Coming Soon - We're building something amazing" |
+| `SITE_KEYWORDS` | SEO meta keywords | "coming soon, template, website, launch" |
 | `CUSTOM_LOGO_URL` | Custom logo image URL | _(none)_ |
 | `CUSTOM_CSS_URL` | Custom stylesheet URL | _(none)_ |
 | `BACKGROUND_VIDEO` | Background video path/URL | "./media/bgvideo1.mp4" |
 
 For a complete list of configuration options, see `.env.example`.
+
+## SEO and Social Media Features
+
+✅ **Complete Open Graph tags** for Meta platforms (Facebook, Instagram, WhatsApp)  
+✅ **X (Twitter) Card support** for proper link previews  
+✅ **Canonical URLs** for SEO optimization  
+✅ **Meta descriptions and keywords** for search engine indexing  
+✅ **Customizable social sharing images** via `OG_IMAGE` variable  
+
+**Testing your social media setup:**
+- **Meta Sharing Debugger**: https://developers.facebook.com/tools/debug/
+- **X Card Validator**: https://cards-dev.twitter.com/validator
 
 ## Documentation
 
