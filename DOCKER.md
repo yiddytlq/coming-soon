@@ -57,8 +57,8 @@ These control meta tags for search engines and social platforms:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `SITE_URL` | "https://example.com" | Canonical URL and base for social sharing |
-| `OG_IMAGE` | "https://example.com/media/hourglass.png" | Open Graph image for social sharing |
+| `SITE_URL` | "" | Canonical URL and base for social sharing |
+| `OG_IMAGE` | "" | Open Graph image for social sharing |
 | `OG_TYPE` | "website" | Open Graph content type |
 
 ### Asset Override Variables
@@ -85,8 +85,8 @@ The application includes comprehensive meta tags for SEO and social media sharin
 **Important SEO Variables:**
 ```bash
 docker run -d -p 8080:80 \
-  -e SITE_URL="https://yoursite.com" \
-  -e OG_IMAGE="https://yoursite.com/social-preview.jpg" \
+  -e SITE_URL="https://yoursiteurl.com" \
+  -e OG_IMAGE="https://yoursiteurl.com/social-preview.jpg" \
   -e SITE_DESCRIPTION="Compelling description for search engines" \
   coming-soon
 ```
@@ -98,9 +98,9 @@ docker run -d -p 8080:80 \
 Use external URLs to override assets:
 ```bash
 docker run -d -p 8080:80 \
-  -e CUSTOM_CSS_URL="https://cdn.example.com/custom.css" \
-  -e CUSTOM_LOGO_URL="https://cdn.example.com/logo.png" \
-  -e BACKGROUND_VIDEO="https://cdn.example.com/video.mp4" \
+  -e CUSTOM_CSS_URL="https://assets.yoursiteurl.com/custom.css" \
+  -e CUSTOM_LOGO_URL="https://cdn.yoursiteurl.com/logo.png" \
+  -e BACKGROUND_VIDEO="https://cdn.yoursiteurl.com/video.mp4" \
   coming-soon
 ```
 
@@ -167,7 +167,7 @@ docker run -d -p 80:80 --name startup-landing \
   -e SITE_URL="https://techstart.com" \
   -e OG_IMAGE="https://cdn.techstart.com/social-preview.jpg" \
   -e CUSTOM_LOGO_URL="https://cdn.techstart.com/logo.png" \
-  -e CUSTOM_CSS_URL="https://cdn.techstart.com/brand.css" \
+  -e CUSTOM_CSS_URL="https://assets.techstart.com/brand.css" \
   -e BACKGROUND_VIDEO="https://cdn.techstart.com/hero-video.mp4" \
   --restart unless-stopped \
   coming-soon
@@ -182,7 +182,7 @@ BRAND_NAME=AMAZING
 SITE_MESSAGE=Get ready for something that will change everything. We're putting the finishing touches on our revolutionary platform.
 SITE_DESCRIPTION=Amazing Product - Revolutionary platform coming soon
 SITE_KEYWORDS=amazing, product, revolutionary, platform, technology
-CUSTOM_LOGO_URL=https://cdn.mycompany.com/logo.png
+CUSTOM_LOGO_URL=https://cdn.yoursiteurl.com/logo.png
 ```
 
 Then deploy:
@@ -217,11 +217,11 @@ services:
     build: .
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.coming-soon.rule=Host(`example.com`)"
+      - "traefik.http.routers.coming-soon.rule=Host(`yoursiteurl.com`)"
       - "traefik.http.routers.coming-soon.tls.certresolver=letsencrypt"
     environment:
-      - SITE_TITLE=Example.com - Coming Soon
-      - BRAND_NAME=EXAMPLE
+      - SITE_TITLE=yoursiteurl.com - Coming Soon
+      - BRAND_NAME=YOUR BRAND
 ```
 
 ### SSL/TLS Termination
