@@ -52,6 +52,15 @@ These have defaults that work out of the box:
 | `BACKGROUND_VIDEO` | "./media/bgvideo1.mp4" | Path or URL to background video |
 | `FAVICON` | "media/hourglass.png" | Path to favicon icon |
 
+### SEO and Social Media Variables
+These control meta tags for search engines and social platforms:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `SITE_URL` | "" | Canonical URL and base for social sharing |
+| `OG_IMAGE` | "" | Open Graph image for social sharing |
+| `OG_TYPE` | "website" | Open Graph content type |
+
 ### Asset Override Variables
 These enable advanced customization:
 
@@ -60,6 +69,28 @@ These enable advanced customization:
 | `CUSTOM_CSS_URL` | "" | URL to custom CSS file to override styles |
 | `CUSTOM_LOGO_URL` | "" | URL to custom logo image to replace brand text |
 
+## SEO and Social Media Optimization
+
+The application includes comprehensive meta tags for SEO and social media sharing:
+
+**Open Graph (Meta platforms)**: Facebook, Instagram, WhatsApp link previews  
+**X (Twitter) Cards**: Optimized Twitter link previews  
+**Canonical URLs**: SEO optimization for search engines  
+
+**Testing your setup:**
+- **Meta Sharing Debugger**: https://developers.facebook.com/tools/debug/
+- **X Card Validator**: https://cards-dev.twitter.com/validator
+- **Google Rich Results Test**: https://search.google.com/test/rich-results
+
+**Important SEO Variables:**
+```bash
+docker run -d -p 8080:80 \
+  -e SITE_URL="https://yoursiteurl.com" \
+  -e OG_IMAGE="https://yoursiteurl.com/social-preview.jpg" \
+  -e SITE_DESCRIPTION="Compelling description for search engines" \
+  coming-soon
+```
+
 ## Asset Customization
 
 ### Method 1: Environment Variables with URLs
@@ -67,9 +98,9 @@ These enable advanced customization:
 Use external URLs to override assets:
 ```bash
 docker run -d -p 8080:80 \
-  -e CUSTOM_CSS_URL="https://cdn.example.com/custom.css" \
-  -e CUSTOM_LOGO_URL="https://cdn.example.com/logo.png" \
-  -e BACKGROUND_VIDEO="https://cdn.example.com/video.mp4" \
+  -e CUSTOM_CSS_URL="https://assets.yoursiteurl.com/custom.css" \
+  -e CUSTOM_LOGO_URL="https://cdn.yoursiteurl.com/logo.png" \
+  -e BACKGROUND_VIDEO="https://cdn.yoursiteurl.com/video.mp4" \
   coming-soon
 ```
 
@@ -120,6 +151,8 @@ docker run -d -p 80:80 --name company-coming-soon \
   -e SITE_MESSAGE="We're revolutionizing the industry. Something incredible is coming your way!" \
   -e SITE_DESCRIPTION="ACME Corporation is launching something revolutionary" \
   -e SITE_KEYWORDS="ACME, innovation, technology, corporate, launch" \
+  -e SITE_URL="https://acme.com" \
+  -e OG_IMAGE="https://acme.com/images/acme-preview.jpg" \
   --restart unless-stopped \
   coming-soon
 ```
@@ -131,8 +164,10 @@ docker run -d -p 80:80 --name startup-landing \
   -e SITE_TITLE="TechStart - Launching Soon" \
   -e BRAND_NAME="TechStart" \
   -e SITE_MESSAGE="We're building the future of technology. Join us on this incredible journey!" \
+  -e SITE_URL="https://techstart.com" \
+  -e OG_IMAGE="https://cdn.techstart.com/social-preview.jpg" \
   -e CUSTOM_LOGO_URL="https://cdn.techstart.com/logo.png" \
-  -e CUSTOM_CSS_URL="https://cdn.techstart.com/brand.css" \
+  -e CUSTOM_CSS_URL="https://assets.techstart.com/brand.css" \
   -e BACKGROUND_VIDEO="https://cdn.techstart.com/hero-video.mp4" \
   --restart unless-stopped \
   coming-soon
@@ -147,7 +182,7 @@ BRAND_NAME=AMAZING
 SITE_MESSAGE=Get ready for something that will change everything. We're putting the finishing touches on our revolutionary platform.
 SITE_DESCRIPTION=Amazing Product - Revolutionary platform coming soon
 SITE_KEYWORDS=amazing, product, revolutionary, platform, technology
-CUSTOM_LOGO_URL=https://cdn.mycompany.com/logo.png
+CUSTOM_LOGO_URL=https://cdn.yoursiteurl.com/logo.png
 ```
 
 Then deploy:
@@ -182,11 +217,11 @@ services:
     build: .
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.coming-soon.rule=Host(`example.com`)"
+      - "traefik.http.routers.coming-soon.rule=Host(`yoursiteurl.com`)"
       - "traefik.http.routers.coming-soon.tls.certresolver=letsencrypt"
     environment:
-      - SITE_TITLE=Example.com - Coming Soon
-      - BRAND_NAME=EXAMPLE
+      - SITE_TITLE=yoursiteurl.com - Coming Soon
+      - BRAND_NAME=YOUR BRAND
 ```
 
 ### SSL/TLS Termination

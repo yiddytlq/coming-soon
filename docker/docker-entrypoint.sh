@@ -30,6 +30,7 @@ cp /usr/share/nginx/html/index-template.html /usr/share/nginx/html/index.html
 SITE_TITLE=${SITE_TITLE:-"Coming Soon"}
 SITE_DESCRIPTION=${SITE_DESCRIPTION:-"Coming Soon - We're building something amazing"}
 SITE_KEYWORDS=${SITE_KEYWORDS:-"coming soon, template, website, launch"}
+OG_TYPE=${OG_TYPE:-"website"}
 BRAND_NAME=${BRAND_NAME:-"NEXUS"}
 SITE_MESSAGE=${SITE_MESSAGE:-"Hello fellow developers! We're currently building our new application. Stay up-to-date with announcements and our launch date."}
 BACKGROUND_VIDEO=${BACKGROUND_VIDEO:-"./media/bgvideo1.mp4"}
@@ -40,6 +41,9 @@ echo "Configuring application with environment variables..."
 sed -i "s|{{SITE_TITLE}}|$(escape_for_sed "$SITE_TITLE")|g" /usr/share/nginx/html/index.html
 sed -i "s|{{SITE_DESCRIPTION}}|$(escape_for_sed "$SITE_DESCRIPTION")|g" /usr/share/nginx/html/index.html
 sed -i "s|{{SITE_KEYWORDS}}|$(escape_for_sed "$SITE_KEYWORDS")|g" /usr/share/nginx/html/index.html
+sed -i "s|{{SITE_URL}}|$(escape_for_sed "$SITE_URL")|g" /usr/share/nginx/html/index.html
+sed -i "s|{{OG_IMAGE}}|$(escape_for_sed "$OG_IMAGE")|g" /usr/share/nginx/html/index.html
+sed -i "s|{{OG_TYPE}}|$(escape_for_sed "$OG_TYPE")|g" /usr/share/nginx/html/index.html
 sed -i "s|{{BRAND_NAME}}|$(escape_for_sed "$BRAND_NAME")|g" /usr/share/nginx/html/index.html
 sed -i "s|{{SITE_MESSAGE}}|$(escape_for_sed "$SITE_MESSAGE")|g" /usr/share/nginx/html/index.html
 sed -i "s|{{BACKGROUND_VIDEO}}|$(escape_for_sed "$BACKGROUND_VIDEO")|g" /usr/share/nginx/html/index.html
@@ -66,6 +70,9 @@ echo "Environment variables applied:"
 echo "  SITE_TITLE: $SITE_TITLE"
 echo "  SITE_DESCRIPTION: $SITE_DESCRIPTION"
 echo "  SITE_KEYWORDS: $SITE_KEYWORDS"
+echo "  SITE_URL: $SITE_URL"
+echo "  OG_IMAGE: $OG_IMAGE"
+echo "  OG_TYPE: $OG_TYPE"
 echo "  BRAND_NAME: $BRAND_NAME"
 echo "  SITE_MESSAGE: $SITE_MESSAGE"
 echo "  BACKGROUND_VIDEO: $BACKGROUND_VIDEO"

@@ -21,6 +21,7 @@ RUN chmod +x /docker-entrypoint.sh
 ENV SITE_TITLE="Coming Soon" \
     SITE_DESCRIPTION="Coming Soon - We're building something amazing" \
     SITE_KEYWORDS="coming soon, template, website, launch" \
+    OG_TYPE="website" \
     BRAND_NAME="NEXUS" \
     SITE_MESSAGE="Hello fellow developers! We're currently building our new application. Stay up-to-date with announcements and our launch date." \
     BACKGROUND_VIDEO="./media/bgvideo1.mp4" \
